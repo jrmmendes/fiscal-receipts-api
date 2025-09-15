@@ -16,6 +16,7 @@ export class Application {
 
   async bootstrapNest() {
     const fastifyInstance = fastify();
+
     const nestApp = await NestFactory.create(
       AppModule,
       new FastifyAdapter(fastifyInstance as unknown),
