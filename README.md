@@ -8,7 +8,8 @@ npm ci
 ```
 
 ## Executando o projeto
-
+> [!IMPORTANT]
+> É necessário ter um arquivo `.env` na raiz do projeto, mesmo vazio, para utilizar esse script.
 ```bash
 npm run start:dev
 ```
