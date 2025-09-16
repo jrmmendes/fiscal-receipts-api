@@ -13,7 +13,7 @@ type IngestReceiptCommandArgs = {
 };
 
 @Injectable()
-export class IngestReceiptCommand {
+export class IngestFiscalReceiptCommand {
   constructor(private readonly queueClient: QueueClient) {}
 
   execute({

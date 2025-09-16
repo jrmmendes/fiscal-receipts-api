@@ -4,7 +4,7 @@ import { QueueClient } from './infra/queue/queue.client';
 import { MockQueueAdapter } from './infra/queue/adapters/mock-queue.adapter';
 import { LoggerModule } from 'nestjs-pino';
 import { pinoHttp } from './infra/logger/logger.config';
-import { IngestReceiptCommand } from './domain/ingest-fiscal-receipt.command';
+import { IngestFiscalReceiptCommand } from './domain/ingest-fiscal-receipt.command';
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { IngestReceiptCommand } from './domain/ingest-fiscal-receipt.command';
   ],
   controllers: [FiscalReceiptsController],
   providers: [
-    IngestReceiptCommand,
+    IngestFiscalReceiptCommand,
     {
       provide: QueueClient,
       useClass: MockQueueAdapter,

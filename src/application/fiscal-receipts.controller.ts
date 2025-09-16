@@ -1,4 +1,4 @@
-import { IngestReceiptCommand } from '@/domain/ingest-fiscal-receipt.command';
+import { IngestFiscalReceiptCommand } from '@/domain/ingest-fiscal-receipt.command';
 import {
   BadRequestException,
   Body,
@@ -14,7 +14,7 @@ import { IngestFiscalReceiptBody } from './ingest-fiscal-receipt-body.dto';
 
 @Controller('fiscal-receipts')
 export class FiscalReceiptsController {
-  constructor(private readonly command: IngestReceiptCommand) {}
+  constructor(private readonly command: IngestFiscalReceiptCommand) {}
 
   @Post()
   @ApiCreatedResponse()
@@ -28,7 +28,7 @@ export class FiscalReceiptsController {
     required: true
   })
   async ingest(
-    @Headers() headers: string,
+    @Headers() headers: Record<string, string>,
     @Body() payload: IngestFiscalReceiptBody,
   ) {
     const format = headers['format'];
