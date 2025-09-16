@@ -1,3 +1,4 @@
+import { FiscalReceipt } from '@/domain/fiscal-receipt.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { plainToInstance } from 'class-transformer';
 

@@ -6,7 +6,7 @@ type FiscalReceiptProps = {
   payload: unknown;
 };
 
-class FiscalReceipt {
+export class FiscalReceipt {
   private props: FiscalReceiptProps;
 
   constructor(props: FiscalReceiptProps) {

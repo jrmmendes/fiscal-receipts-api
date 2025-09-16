@@ -8,8 +8,9 @@ import {
   Post,
   UnprocessableEntityException,
 } from '@nestjs/common';
-import { ApiCreatedResponse } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiHeader } from '@nestjs/swagger';
 import { IngestReceiptResponse } from './ingest-receipt-response.dto';
+import { IngestFiscalReceiptBody } from './ingest-receipt-body.dto';
 
 @Controller('fiscal-receipts')
 export class ReceiptsController {
@@ -17,12 +18,25 @@ export class ReceiptsController {
 
   @Post()
   @ApiCreatedResponse()
+  @ApiHeader({
+    name: 'format',
+    enum: ['default', 'pos-json-v2'],
+    required: true
+  })
+  @ApiHeader({
+    name: 'source',
+    required: true
+  })
   async ingest(
     @Headers() headers: string,
-    @Body() payload: unknown,
+    @Body() payload: IngestFiscalReceiptBody,
   ) {
     const format = headers['format'];
     const source = headers['source'];
+
+    if (!payload) {
+      throw new BadRequestException('Missing body')
+    }
 
     if (!format) {
       throw new BadRequestException('Fiscal receipt format header missing');
