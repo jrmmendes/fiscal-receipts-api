@@ -2,7 +2,7 @@ import { FiscalReceipt } from '@/domain/fiscal-receipt.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { plainToInstance } from 'class-transformer';
 
-export class IngestReceiptResponse {
+export class IngestFiscalReceiptResponse {
   @ApiProperty()
   id: string;
 
@@ -11,7 +11,7 @@ export class IngestReceiptResponse {
 
   static from(entity: FiscalReceipt) {
     const data = entity.serialize();
-    return plainToInstance(IngestReceiptResponse, {
+    return plainToInstance(IngestFiscalReceiptResponse, {
       id: data.id,
       timestamp: data.timestamp,
     });

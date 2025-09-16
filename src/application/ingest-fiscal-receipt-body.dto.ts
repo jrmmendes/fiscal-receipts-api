@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ArrayMinSize, IsArray, IsNumber, IsString } from 'class-validator';
 
 export class FiscalReceiptItem {
   @ApiProperty()
@@ -13,16 +14,21 @@ export class FiscalReceiptItem {
 
 export class IngestFiscalReceiptBody {
   @ApiProperty()
+  @IsNumber()
   code: number;
 
   @ApiProperty()
+  @IsString()
   terminal: string;
 
   @ApiProperty()
+  @IsString()
   clientName: string;
 
   @ApiProperty({
-    type: [FiscalReceiptItem]
+    type: [FiscalReceiptItem],
   })
+  @IsArray()
+  @ArrayMinSize(1)
   items: FiscalReceiptItem[];
 }

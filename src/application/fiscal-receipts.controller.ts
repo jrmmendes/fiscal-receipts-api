@@ -9,11 +9,11 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common';
 import { ApiCreatedResponse, ApiHeader } from '@nestjs/swagger';
-import { IngestReceiptResponse } from './ingest-receipt-response.dto';
-import { IngestFiscalReceiptBody } from './ingest-receipt-body.dto';
+import { IngestFiscalReceiptResponse } from './ingest-fiscal-receipt-response.dto';
+import { IngestFiscalReceiptBody } from './ingest-fiscal-receipt-body.dto';
 
 @Controller('fiscal-receipts')
-export class ReceiptsController {
+export class FiscalReceiptsController {
   constructor(private readonly command: IngestReceiptCommand) {}
 
   @Post()
@@ -62,6 +62,6 @@ export class ReceiptsController {
 
     const receipt = ingestion.value;
 
-    return IngestReceiptResponse.from(receipt);
+    return IngestFiscalReceiptResponse.from(receipt);
   }
 }

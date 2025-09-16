@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ReceiptsController } from './application/receipts.controller';
+import { FiscalReceiptsController } from './application/fiscal-receipts.controller';
 import { QueueClient } from './infra/queue/queue.client';
 import { MockQueueAdapter } from './infra/queue/adapters/mock-queue.adapter';
 import { LoggerModule } from 'nestjs-pino';
@@ -12,7 +12,7 @@ import { IngestReceiptCommand } from './domain/ingest-fiscal-receipt.command';
       pinoHttp: pinoHttp,
     }),
   ],
-  controllers: [ReceiptsController],
+  controllers: [FiscalReceiptsController],
   providers: [
     IngestReceiptCommand,
     {
